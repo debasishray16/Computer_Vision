@@ -1,0 +1,79 @@
+->Img imread is used to import image.
+
+<variable_name>=imread("<file_name>");
+img1=imread("file01.jpg");  
+
+imshow(<file_name">);
+imshow(img1);
+
+img2=imread("file02.jpg");
+img3=imread("file03.jpg");
+
+imshow(img2);
+imshow(img3);
+
+---------------------------------------------------------------------------------------
+You can use the googlenet function to create a copy of the predefined deep network “GoogLeNet” in the MATLAB workspace.
+---------------------------------------------------------------------------------------
+You can use the classify function to make a prediction on an image.
+pred = classify(net,img)
+
+<variable_name>=classify(<predefined_name>,<file_name>);
+-----------------------------------------------------------------------------------
+
+The variable deepnet represents a deep convolutional network. You can inspect the layers of the network by referencing the Layers property of the variable, using variable.Property indexing:
+deepnet.Layers
+
+deepnet=googlenet;
+<variable_name>=deepnet.Layers;
+-----------------------------------------------------------------------------
+
+                                       CNN Artitecture Layering
+
+The variable ly is an array of network layers. You can inspect an individual layer by indexing into ly with regular MATLAB array indexing:
+layer3 = ly(3)
+
+deepnet=googlenet;
+<variable_name1>=deepnet.Layers;
+<variable_name2>=<variable_name>(<index_no>)
+------------------------------------------------------------------------------
+Each layer of the network has properties relevant to that type of layer. An important property for an input layer is InputSize, which is the size (dimensions) of images the network expects as input.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The Classes property of an output layer gives the names of the categories the network is trained to predict.
+
+
+deepnet = googlenet;
+ly=deepnet.Layers
+outlayer=ly(144)
+categorynames=outlayer.Classes;
+------------------------------------------------------------------------------------------
+The classify function gives the class to which the network assigns the highest score. You can obtain the predicted scores for all the classes by requesting a second output from classify.
+[pred,scrs] = classify(net,img)
+-----------------------------------------------------------------------------------------
+DATASTORES-
+Datastores in matlab are those in which the we do not require to import the data without using the classify keyword.
+
+Datastores are those int which the data folders are read(READ)  which consists of image files  and then can be accessed from the  folder which consists of set of images with extension.
+
+This helps in code reducibilty and can be imported easily in large matlab program files. This helps in management of memory.
+
+USE: 
+-> You can use the imageDatastore function to create a datastore in MATLAB, specifying the folder or file names as the input. You can use wildcard characters such as * to specify multiple files.
+ds = imageDatastore("foo*.png")
+This will create a datastore to all the PNG files in the current folder with names starting with foo.
+
+
+
+-> You can manually import data from a datastore using the read, readimage, and readall functions.
+read imports images one at a time, in order
+readimage imports a single specific image
+readall imports all the images into a single cell array, with each image in a separate cell
+
+I = readimage(ds,n)
+This imports the nth image of the datastore ds into an array called I.
+-----------------------------------------------------------------------------------------------------
+
+You can use an image datastore in place of an individual image in CNN functions such as classify.
+preds = classify(net,ds)
+The result will be an array of predicted classes, one for each image in the datastore.
+
