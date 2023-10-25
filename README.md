@@ -1,19 +1,20 @@
 # MatLAB
+
 ## Overview of Convolutional Neural Networks (CNNs)
 Convolutional Neural Networks (CNNs) are a class of artificial neural networks that have demonstrated exceptional effectiveness in various computer vision tasks, such as image classification, object detection, and image segmentation.
 
 ## Key Components of a CNN
 
--Input Layer
--Convolutional Layers
--Activation Functions
--Pooling (Subsampling) Layers
--Fully Connected (Dense) Layers
--Softmax Layer (Output Layer)
--Loss Function
--Backpropagation
--Training
--Regularization and Normalization
+- Input Layer
+- Convolutional Layers
+- Activation Functions
+- Pooling (Subsampling) Layers
+- Fully Connected (Dense) Layers
+- Softmax Layer (Output Layer)
+- Loss Function
+- Backpropagation
+- Training
+- Regularization and Normalization
 
 ## Brief Explanation of Each Component
 
